@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:tns="phpchassis"
+    targetNamespace="phpchassis"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:s="http://www.w3.org/2001/XMLSchema"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+    <wsdl:message name="getSoapIn">
+        <wsdl:part name="request" type="tns:array" />
+        <wsdl:part name="response" type="tns:array" />
+    </wsdl:message>
+    <wsdl:message name="getSoapOut">
+        <wsdl:part name="return" type="tns:array" />
+    </wsdl:message>
+    <!-- some nodes removed to conserve space -->
+    <wsdl:portType name="CustomerApiSoap">
+    <!-- some nodes removed to conserve space -->
+    <wsdl:binding name="CustomerApiSoap" type="tns:CustomerApiSoap">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+        <wsdl:operation name="get">
+            <soap:operation soapAction="phpchassis#get" />
+            <wsdl:input>
+                <soap:body use="encoded" 
+                  encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                  namespace="phpchassis" 
+                  parts="request response" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="encoded" 
+                    encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                    namespace="phpchassis" 
+                    parts="return" />
+            </wsdl:output>
+        </wsdl:operation>
+        <!-- some nodes removed to conserve space -->
+    </wsdl:binding>
+    <wsdl:service name="ProspectApi">
+        <wsdl:port name="ProspectApiSoap" binding="tns:ProspectApiSoap">
+            <soap:address location="http://localhost:8080/" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

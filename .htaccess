@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+    # Ref:  https://stackoverflow.com/questions/14884439/automatically-load-a-config-php-file-for-all-pages-before-anything-else
+    #       https://davidwalsh.name/prepend-append-files-htaccess
+    #
+    #  auto_prepend_file
+    #   Set this directive in your php.ini or .htaccess file to the path to your config.php file and any PHP file accessed
+    #   will automatically have the contents of the config file prepended to it.
+    #
+    #       Keep in mind this ONLY will work on a server where PHP is run as an Apache module. If PHP is run as a CGI you need
+    #       to add edit it in your php.ini file or put it inside a .user.ini file just without the php_value part.
+    #
+    #       In Nginx you could add this line to server configuration inside location ~ \.php$
+    #           fastcgi_param PHP_VALUE "auto_prepend_file=/full/path/to/file/config.php";
+    php_value auto_prepend_file C:\wamp64\www\dev.youvids\web\app.init.php
+
+    #ErrorDocument 404 /src/application/views/error/404.php
+</IfModule>
